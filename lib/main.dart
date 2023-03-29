@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter/material.dart';
+
 
 import 'grille_du_jeu.dart';
+import 'regles_de_jeu.dart';
 
 void main() {
   runApp(const MyApp());
@@ -65,17 +66,40 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-      //create a button to navigate to the grille_du_jeu.dart
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) =>  GrilleDuJeu()),
-          );
-        },
-        tooltip: 'Increment',
-        child: const Icon(Icons.radio),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      //create a buttons to navigate to the grille_du_jeu.dart
+       // This trailing comma makes auto-formatting nicer for build methods.
+      //on the left of the page create a button to navigate to regles_de_jeu.dart
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+           const DrawerHeader(
+              child: Text('Menu'),
+              decoration: BoxDecoration(
+                color: Colors.blue,
+              ),
+            ),
+            ListTile(
+              title: Text('Règles du jeu'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ReglesDeJeu()),
+                );
+              },
+            ),
+            ListTile(
+              title: Text('Grille du jeu'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => GrilleDuJeu()),
+                );
+              },
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
