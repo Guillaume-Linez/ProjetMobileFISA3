@@ -28,8 +28,8 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFAE0000),
-      body: Container(
+      backgroundColor: const Color(0xFFAE0000),
+      body: SizedBox(
         width: 200,
         height: 45,
         child: TextButton(
