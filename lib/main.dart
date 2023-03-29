@@ -11,11 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.red,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'Masyu'),
     );
   }
 }
@@ -29,12 +25,29 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
 
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFAE0000), // This trailing comma makes auto-formatting nicer for build methods.
+      backgroundColor: Color(0xFFAE0000),
+      body: Container(
+        width: 200,
+        height: 45,
+        child: TextButton(
+          style: TextButton.styleFrom(
+            backgroundColor: Color(),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20),
+            ),
+          ),
+          onPressed: () {},
+          child: Text(
+            "TextButton",
+            style: TextStyle(
+              color: Color(0xffffffff),
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
