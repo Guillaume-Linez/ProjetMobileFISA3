@@ -10,8 +10,8 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: const MyHomePage(title: 'Masyu'),
+    return const MaterialApp(
+      home: MyHomePage(title: 'Masyu'),
     );
   }
 }
@@ -40,7 +40,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ),
           onPressed: () {},
-          child: Text(
+          child: const Text(
             "TextButton",
             style: TextStyle(
               color: Color(0xffffffff),
