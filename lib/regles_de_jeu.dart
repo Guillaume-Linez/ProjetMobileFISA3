@@ -27,10 +27,10 @@ class ReglesDeJeu extends StatelessWidget {
             ),
           ),
 
-          Row(
+          const Row(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
-            children: const <Widget>[
+            children: <Widget>[
               Flexible(
                 flex: 1,
                 child: Padding(
@@ -50,8 +50,8 @@ class ReglesDeJeu extends StatelessWidget {
             ],
           ),
 
-          Row(
-            children: const <Widget>[
+          const Row(
+            children:  <Widget>[
               Flexible(
                 flex: 1,
                 child: Padding(
@@ -70,8 +70,8 @@ class ReglesDeJeu extends StatelessWidget {
             ],
           ),
 
-          Row(
-            children: const <Widget>[
+          const Row(
+            children:  <Widget>[
               Flexible(
                 flex: 1,
                 child: Padding(
@@ -90,8 +90,8 @@ class ReglesDeJeu extends StatelessWidget {
             ],
           ),
 
-          Row(
-            children: const <Widget>[
+          const Row(
+            children: <Widget>[
               Flexible(
                 flex: 1,
                 child: Padding(
@@ -110,8 +110,8 @@ class ReglesDeJeu extends StatelessWidget {
             ],
           ),
 
-          Row(
-            children: const <Widget>[
+          const Row(
+            children: <Widget>[
               Flexible(
                 flex: 1,
                 child: Padding(
@@ -130,8 +130,8 @@ class ReglesDeJeu extends StatelessWidget {
             ],
           ),
 
-          Row(
-            children: const <Widget>[
+          const Row(
+            children: <Widget>[
               Flexible(
                 flex: 1,
                 child: Padding(

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:masyu/regles_de_jeu.dart';
-
 import 'grille_du_jeu.dart';
+import 'afficher_classement.dart';
 
 void main() {
   runApp(const MyApp());
@@ -107,7 +107,9 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ),
                 onPressed: () {
-
+                  Navigator.push(context, MaterialPageRoute(builder: (context){
+                    return const MyClassement();
+                  }));
                 },
                 child: const Text(
                   'classement',
