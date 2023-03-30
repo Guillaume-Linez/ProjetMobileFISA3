@@ -24,29 +24,121 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFFAE0000),
-      body: SizedBox(
-        width: 200,
-        height: 45,
-        child: TextButton(
-          style: TextButton.styleFrom(
-            backgroundColor: Color(),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20),
+      body: Stack(
+        children: <Widget>[
+          Container(
+            alignment: Alignment.center,
+            child: const Text(
+              'Masyu',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontFamily: 'Public Pixel',
+                fontSize: 60,
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+              ),
             ),
           ),
-          onPressed: () {},
-          child: const Text(
-            "TextButton",
-            style: TextStyle(
-              color: Color(0xffffffff),
+          Padding(
+            padding: const EdgeInsets.only(top: 130),
+            child: Container(
+              alignment: Alignment.center,
+              child: const Text(
+                'ましゅ',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontFamily: 'Public Pixel',
+                  fontSize: 60,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
+                ),
+              ),
             ),
           ),
-        ),
+          Positioned(
+            bottom: 110,
+
+            left: MediaQuery.of(context).size.width * 0.28,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(30),
+              child: TextButton(
+                style: TextButton.styleFrom(
+                  backgroundColor: Colors.white,
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 5.0,
+                    horizontal: 17.0,
+                  ),
+                ),
+                onPressed: () {},
+                child: const Text(
+                  'Start',
+                  style: TextStyle(
+                    fontFamily: 'Public Pixel',
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                  ),
+                ),
+              ),
+            ),
+          ),
+          Positioned(
+            bottom: 60,
+            left: MediaQuery.of(context).size.width *0.08 ,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(30),
+              child: TextButton(
+                style: TextButton.styleFrom(
+                  backgroundColor: Colors.white,
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 5.0,
+                    horizontal: 17.0,
+                  ),
+                ),
+                onPressed: () {},
+                child: const Text(
+                  'Classement',
+                  style: TextStyle(
+                    fontFamily: 'Public Pixel',
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                  ),
+                ),
+              ),
+            ),
+          ),
+          Positioned(
+            top: 60,
+            left: MediaQuery.of(context).size.width *0.24 ,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(30),
+              child: TextButton(
+                style: TextButton.styleFrom(
+                  backgroundColor: Colors.white,
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 5.0,
+                    horizontal: 17.0,
+                  ),
+                ),
+                onPressed: () {},
+                child: const Text(
+                  'Manuel',
+                  style: TextStyle(
+                    fontFamily: 'Public Pixel',
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
