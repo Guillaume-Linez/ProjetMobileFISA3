@@ -62,8 +62,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ),
           Positioned(
-            bottom: 110,
-
+            bottom: 150,
             left: MediaQuery.of(context).size.width * 0.28,
             child: ClipRRect(
               borderRadius: BorderRadius.circular(30),
@@ -81,11 +80,10 @@ class _MyHomePageState extends State<MyHomePage> {
                   }));
                 },
                 child: const Text(
-                  'Start',
+                  'start',
                   style: TextStyle(
-                    fontFamily: 'Public Pixel',
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold,
+                    fontFamily: 'Pixeloid',
+                    fontSize: (50),
                     color: Colors.black,
                   ),
                 ),
@@ -109,11 +107,10 @@ class _MyHomePageState extends State<MyHomePage> {
 
                 },
                 child: const Text(
-                  'Classement',
+                  'classement',
                   style: TextStyle(
-                    fontFamily: 'Public Pixel',
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold,
+                    fontFamily: 'Pixeloid',
+                    fontSize: 50,
                     color: Colors.black,
                   ),
                 ),
@@ -121,7 +118,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ),
           Positioned(
-            top: 60,
+            top: 180,
             left: MediaQuery.of(context).size.width *0.24 ,
             child: ClipRRect(
               borderRadius: BorderRadius.circular(30),
@@ -150,7 +147,35 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
           ),
-        ],
+        Container(
+          padding: EdgeInsets.only(top: 30),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ElevatedButton(
+                onPressed: () {},
+                child: Text('5x5'),
+              ),
+              ElevatedButton(
+                onPressed: () {},
+                child: Text('6x6'),
+              ),
+              ElevatedButton(
+                onPressed: () {},
+                child: Text('7x7'),
+              ),
+              ElevatedButton(
+                onPressed: () {},
+                child: Text('8x8'),
+              ),
+              ElevatedButton(
+                onPressed: () {},
+                child: Text('9x9'),
+              ),
+            ],
+          ),
+        ),
+      ],
       ),
     );
   }

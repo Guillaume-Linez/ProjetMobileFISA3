@@ -27,7 +27,7 @@ class ReglesDeJeu extends StatelessWidget {
             ),
           ),
           const Padding(
-            padding:  EdgeInsets.only(left:0, right: 20, top:30, bottom: 30),
+            padding:  EdgeInsets.only(left:0, right: 0, top:30, bottom: 30),
             child:  Text(
                   'Masyu',
                   style: TextStyle(
@@ -39,7 +39,7 @@ class ReglesDeJeu extends StatelessWidget {
           ),
           const Flexible(
             child: Padding(
-              padding: EdgeInsets.only(left: 8.0),
+              padding: EdgeInsets.only(left: 10.0),
               child: Text(
                 'Règles du jeu : \n\nObjectif : créer une boucle unique qui passe par tous les pions \n\n',
                 style: TextStyle(
@@ -52,7 +52,7 @@ class ReglesDeJeu extends StatelessWidget {
           ),
           const Flexible(
             child: Padding(
-              padding: EdgeInsets.only(left: 8.0),
+              padding: EdgeInsets.only(left: 10.0),
               child: Text(
                 'Contraintes sur les pions :\n',
                 style: TextStyle(
@@ -67,7 +67,7 @@ class ReglesDeJeu extends StatelessWidget {
             child: Padding(
               padding: EdgeInsets.only(left: 20.0, bottom: 20.0),
               child: Text(
-                '\n\n\nUn pion est obligatoirement relié à deux branches\n\nLes traits ne doivent pas se croiser',
+                '\nUn pion est obligatoirement relié à deux branches.\n\nLes traits ne doivent pas se croiser.',
                 style: TextStyle(
                   //color: Colors.red,
                   fontSize: 14,
@@ -83,12 +83,12 @@ class ReglesDeJeu extends StatelessWidget {
               Flexible(
                 flex: 1,
                 child: Padding(
-                  padding: EdgeInsets.only(left: 20.0), // Ajoute un padding de 8 à gauche
+                  padding: EdgeInsets.only(left: 20.0),
                   child: Text(
-                    '\n\nLes pions blancs sont traversés par un trait droit\n\nsi on croise un pion blanc, on doit tourner dans au moins une des cellules voisines',
+                    '\nLes pions blancs sont traversés par un trait droit.\n\nSi on croise un pion blanc, on doit tourner dans au moins une des cellules voisines.',
                     style: TextStyle(
                       color: Colors.white,
-                      fontSize: 11,
+                      fontSize: 12,
                       fontFamily: 'Public Pixel',
                       fontWeight: FontWeight.normal,
                     ),
@@ -103,11 +103,11 @@ class ReglesDeJeu extends StatelessWidget {
               Flexible(
                 flex: 1,
                 child: Padding(
-                  padding: EdgeInsets.only(left: 20.0), // Ajoute un padding de 8 à gauche
+                  padding: EdgeInsets.only(left: 20.0),
                   child: Text(
-                    '\n\n\n\nLes pions noirs sont traversés par un angle droit\n\nles branches doivent rester droites dans au moins deux cellules qui succédent',
+                    '\n\nLes pions noirs sont traversés par un angle droit.\n\nLes branches doivent rester droites dans au moins deux cellules qui succèdent.',
                     style: TextStyle(
-                      fontSize: 11,
+                      fontSize: 12,
                       fontFamily: 'Public Pixel',
                       fontWeight: FontWeight.normal,
                     ),
