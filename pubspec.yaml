@@ -80,6 +80,12 @@ flutter:
      - family: Pixeloid
        fonts:
          - asset: fonts/PixeloidMono.ttf
+     - family: SHPinscher
+       fonts:
+           - asset: fonts/SHPinscher-Regular.ttf
+     - family: Free Pixel
+       fonts:
+           - asset: fonts/FreePixel.ttf
 
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
