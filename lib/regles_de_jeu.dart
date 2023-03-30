@@ -8,7 +8,7 @@ class ReglesDeJeu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.red, // Ajout de la couleur de fond
+      backgroundColor: Color(0xFFAE0000), // Ajout de la couleur de fond
       body: Column(
         children: <Widget>[
           Padding(
@@ -37,14 +37,26 @@ class ReglesDeJeu extends StatelessWidget {
                   ),
                 ),
           ),
-          
           const Flexible(
             child: Padding(
               padding: EdgeInsets.only(left: 8.0),
               child: Text(
-                'Règles du jeu : \n\nObjectif : créer une boucle unique qui passe par tous les pions \n\nContraintes sur les pions :\n',
+                'Règles du jeu : \n\nObjectif : créer une boucle unique qui passe par tous les pions \n\n',
                 style: TextStyle(
-                  fontSize: 11,
+                  fontSize: 16,
+                  fontFamily: 'Public Pixel',
+                  fontWeight: FontWeight.normal,
+                ),
+              ),
+            ),
+          ),
+          const Flexible(
+            child: Padding(
+              padding: EdgeInsets.only(left: 8.0),
+              child: Text(
+                'Contraintes sur les pions :\n',
+                style: TextStyle(
+                  fontSize: 15,
                   fontFamily: 'Public Pixel',
                   fontWeight: FontWeight.normal,
                 ),
@@ -58,7 +70,7 @@ class ReglesDeJeu extends StatelessWidget {
                 '\n\n\nUn pion est obligatoirement relié à deux branches\n\nLes traits ne doivent pas se croiser',
                 style: TextStyle(
                   //color: Colors.red,
-                  fontSize: 11,
+                  fontSize: 14,
                   fontFamily: 'Public Pixel',
                   fontWeight: FontWeight.normal,
                 ),
@@ -67,7 +79,7 @@ class ReglesDeJeu extends StatelessWidget {
           ),
 
           Row(
-            children: <Widget>[
+            children: const <Widget>[
               Flexible(
                 flex: 1,
                 child: Padding(
@@ -87,7 +99,7 @@ class ReglesDeJeu extends StatelessWidget {
           ),
 
           Row(
-            children: <Widget>[
+            children: const <Widget>[
               Flexible(
                 flex: 1,
                 child: Padding(
@@ -95,7 +107,6 @@ class ReglesDeJeu extends StatelessWidget {
                   child: Text(
                     '\n\n\n\nLes pions noirs sont traversés par un angle droit\n\nles branches doivent rester droites dans au moins deux cellules qui succédent',
                     style: TextStyle(
-                      //color: Colors.red,
                       fontSize: 11,
                       fontFamily: 'Public Pixel',
                       fontWeight: FontWeight.normal,

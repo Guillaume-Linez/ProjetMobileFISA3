@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:masyu/regles_de_jeu.dart';
+
+import 'grille_du_jeu.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,15 +14,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      routes: {
-        '/': (context) => MyHomePage(),
-        '/jeu': (context) => ,
-      }
+      home: MyHomePage(),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
+
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
@@ -75,7 +76,9 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ),
                 onPressed: () {
-                  Navigator.pushNamed(context, );
+                  Navigator.push(context, MaterialPageRoute(builder: (context){
+                    return GrilleDuJeu();
+                  }));
                 },
                 child: const Text(
                   'Start',
@@ -102,7 +105,9 @@ class _MyHomePageState extends State<MyHomePage> {
                     horizontal: 17.0,
                   ),
                 ),
-                onPressed: () {},
+                onPressed: () {
+
+                },
                 child: const Text(
                   'Classement',
                   style: TextStyle(
@@ -128,7 +133,11 @@ class _MyHomePageState extends State<MyHomePage> {
                     horizontal: 17.0,
                   ),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context){
+                    return const ReglesDeJeu();
+                  }));
+                },
                 child: const Text(
                   'Manuel',
                   style: TextStyle(
