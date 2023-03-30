@@ -12,7 +12,7 @@ class ReglesDeJeu extends StatelessWidget {
       body: Column(
         children: <Widget>[
           Padding(
-            padding: const EdgeInsets.only(left:20, right: 20, top:50),
+            padding: const EdgeInsets.only(left:20, top:50),
             child : Row(
               children: [
                 IconButton( // Ajout d'un bouton retour
@@ -26,56 +26,25 @@ class ReglesDeJeu extends StatelessWidget {
               ],
             ),
           ),
-          const Padding(
-            padding:  EdgeInsets.only(left:0, right: 0, top:30, bottom: 30),
-            child:  Text(
-                  'Masyu',
-                  style: TextStyle(
-                    fontSize: 40,
-                     fontFamily: 'Public Pixel',
-                    fontWeight: FontWeight.normal,
+
+          Row(
+            children: const <Widget>[
+              Flexible(
+                flex: 1,
+                child: Padding(
+                  padding: EdgeInsets.only(left: 20.0),
+                  child: Text(
+                    'Masyu',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 30,
+                      fontFamily: 'Public Pixel',
+                      fontWeight: FontWeight.normal,
+                    ),
                   ),
                 ),
-          ),
-          const Flexible(
-            child: Padding(
-              padding: EdgeInsets.only(left: 10.0),
-              child: Text(
-                'Règles du jeu : \n\nObjectif : créer une boucle unique qui passe par tous les pions \n\n',
-                style: TextStyle(
-                  fontSize: 16,
-                  fontFamily: 'Public Pixel',
-                  fontWeight: FontWeight.normal,
-                ),
               ),
-            ),
-          ),
-          const Flexible(
-            child: Padding(
-              padding: EdgeInsets.only(left: 10.0),
-              child: Text(
-                'Contraintes sur les pions :\n',
-                style: TextStyle(
-                  fontSize: 15,
-                  fontFamily: 'Public Pixel',
-                  fontWeight: FontWeight.normal,
-                ),
-              ),
-            ),
-          ),
-          const Flexible(
-            child: Padding(
-              padding: EdgeInsets.only(left: 20.0, bottom: 20.0),
-              child: Text(
-                '\nUn pion est obligatoirement relié à deux branches.\n\nLes traits ne doivent pas se croiser.',
-                style: TextStyle(
-                  //color: Colors.red,
-                  fontSize: 14,
-                  fontFamily: 'Public Pixel',
-                  fontWeight: FontWeight.normal,
-                ),
-              ),
-            ),
+            ],
           ),
 
           Row(
@@ -84,6 +53,66 @@ class ReglesDeJeu extends StatelessWidget {
                 flex: 1,
                 child: Padding(
                   padding: EdgeInsets.only(left: 20.0),
+                  child: Text(
+                    'Règles du jeu : \n\nObjectif : créer une boucle unique qui passe par tous les pions \n\n',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 18,
+                      fontFamily: 'Public Pixel',
+                      fontWeight: FontWeight.normal,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+
+          Row(
+            children: const <Widget>[
+              Flexible(
+                flex: 1,
+                child: Padding(
+                  padding: EdgeInsets.only(left: 20.0),
+                  child: Text(
+                    'Contraintes sur les pions :\n',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 12,
+                      fontFamily: 'Public Pixel',
+                      fontWeight: FontWeight.normal,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+
+          Row(
+            children: const <Widget>[
+              Flexible(
+                flex: 1,
+                child: Padding(
+                  padding: EdgeInsets.only(left: 50.0),
+                  child: Text(
+                    '\nUn pion est obligatoirement relié à deux branches.\n\nLes traits ne doivent pas se croiser.',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 12,
+                      fontFamily: 'Public Pixel',
+                      fontWeight: FontWeight.normal,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+
+          Row(
+            children: const <Widget>[
+              Flexible(
+                flex: 1,
+                child: Padding(
+                  padding: EdgeInsets.only(left: 50.0),
                   child: Text(
                     '\nLes pions blancs sont traversés par un trait droit.\n\nSi on croise un pion blanc, on doit tourner dans au moins une des cellules voisines.',
                     style: TextStyle(
@@ -103,7 +132,7 @@ class ReglesDeJeu extends StatelessWidget {
               Flexible(
                 flex: 1,
                 child: Padding(
-                  padding: EdgeInsets.only(left: 20.0),
+                  padding: EdgeInsets.only(left: 50.0),
                   child: Text(
                     '\n\nLes pions noirs sont traversés par un angle droit.\n\nLes branches doivent rester droites dans au moins deux cellules qui succèdent.',
                     style: TextStyle(

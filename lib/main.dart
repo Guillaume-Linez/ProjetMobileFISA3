@@ -26,6 +26,9 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+
+  int _selectedButtonIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -63,10 +66,10 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           Positioned(
             bottom: 150,
-            left: MediaQuery.of(context).size.width * 0.28,
+            left: MediaQuery.of(context).size.width / 2 - 105,
             child: ClipRRect(
               borderRadius: BorderRadius.circular(30),
-              child: TextButton(
+              child: ElevatedButton(
                 style: TextButton.styleFrom(
                   backgroundColor: Colors.white,
                   padding: const EdgeInsets.symmetric(
@@ -92,7 +95,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           Positioned(
             bottom: 60,
-            left: MediaQuery.of(context).size.width *0.08 ,
+            left: MediaQuery.of(context).size.width / 2 - 190,
             child: ClipRRect(
               borderRadius: BorderRadius.circular(30),
               child: TextButton(
@@ -119,7 +122,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           Positioned(
             top: 180,
-            left: MediaQuery.of(context).size.width *0.24 ,
+            left: MediaQuery.of(context).size.width / 2 - 120,
             child: ClipRRect(
               borderRadius: BorderRadius.circular(30),
               child: TextButton(
@@ -136,45 +139,105 @@ class _MyHomePageState extends State<MyHomePage> {
                   }));
                 },
                 child: const Text(
-                  'Manuel',
+                  'manuel',
                   style: TextStyle(
-                    fontFamily: 'Public Pixel',
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold,
+                    fontFamily: 'Pixeloid',
+                    fontSize: 50,
                     color: Colors.black,
                   ),
                 ),
               ),
             ),
           ),
-        Container(
-          padding: EdgeInsets.only(top: 30),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              ElevatedButton(
-                onPressed: () {},
-                child: Text('5x5'),
-              ),
-              ElevatedButton(
-                onPressed: () {},
-                child: Text('6x6'),
-              ),
-              ElevatedButton(
-                onPressed: () {},
-                child: Text('7x7'),
-              ),
-              ElevatedButton(
-                onPressed: () {},
-                child: Text('8x8'),
-              ),
-              ElevatedButton(
-                onPressed: () {},
-                child: Text('9x9'),
-              ),
-            ],
+          Container(
+            padding: const EdgeInsets.only(top: 50),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    primary: _selectedButtonIndex == 0 ? Colors.black : Colors.white,
+                    onPrimary: _selectedButtonIndex == 0 ? Colors.white : Colors.black,
+                  ),
+                  onPressed: () {
+                    setState(() {
+                      _selectedButtonIndex = 0;
+                    });
+                  },
+                  child: Text(
+                    '5x5',
+                    style: TextStyle(
+                      fontFamily: 'Pixeloid',
+                    ),
+                  ),
+                ),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    primary: _selectedButtonIndex == 1 ? Colors.black : Colors.white,
+                    onPrimary: _selectedButtonIndex == 1 ? Colors.white : Colors.black,
+                  ),
+                  onPressed: () {
+                    setState(() {
+                      _selectedButtonIndex = 1;
+                    });
+                  },
+                  child: Text(
+                    '6x6',
+                    style: TextStyle(
+                      fontFamily: 'Pixeloid',
+                    ),),
+                ),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    primary: _selectedButtonIndex == 2 ? Colors.black : Colors.white,
+                    onPrimary: _selectedButtonIndex == 2 ? Colors.white : Colors.black,
+                  ),
+                  onPressed: () {
+                    setState(() {
+                      _selectedButtonIndex = 2;
+                    });
+                  },
+                  child: Text(
+                    '7x7',
+                    style: TextStyle(
+                      fontFamily: 'Pixeloid',
+                    ),),
+                ),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    primary: _selectedButtonIndex == 3 ? Colors.black : Colors.white,
+                    onPrimary: _selectedButtonIndex == 3 ? Colors.white : Colors.black,
+                  ),
+                  onPressed: () {
+                    setState(() {
+                      _selectedButtonIndex = 3;
+                    });
+                  },
+                  child: Text(
+                    '8x8',
+                    style: TextStyle(
+                      fontFamily: 'Pixeloid',
+                    ),),
+                ),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    primary: _selectedButtonIndex == 4 ? Colors.black : Colors.white,
+                    onPrimary: _selectedButtonIndex == 4 ? Colors.white : Colors.black,
+                  ),
+                  onPressed: () {
+                    setState(() {
+                      _selectedButtonIndex = 4;
+                    });
+                  },
+                  child: Text(
+                    '9x9',
+                    style: TextStyle(
+                      fontFamily: 'Pixeloid',
+                    ),),
+                ),
+              ],
+            ),
           ),
-        ),
       ],
       ),
     );
