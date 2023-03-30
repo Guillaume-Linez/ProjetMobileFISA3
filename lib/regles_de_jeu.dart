@@ -67,7 +67,7 @@ class ReglesDeJeu extends StatelessWidget {
           ),
 
           Row(
-            children: <Widget>[
+            children: const <Widget>[
               Flexible(
                 flex: 1,
                 child: Padding(
@@ -87,7 +87,7 @@ class ReglesDeJeu extends StatelessWidget {
           ),
 
           Row(
-            children: <Widget>[
+            children: const <Widget>[
               Flexible(
                 flex: 1,
                 child: Padding(
