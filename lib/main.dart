@@ -10,15 +10,16 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: MyHomePage(title: 'Masyu'),
+    return MaterialApp(
+      routes: {
+        '/': (context) => MyHomePage(),
+        '/jeu': (context) => ,
+      }
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-  final String title;
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
@@ -73,7 +74,9 @@ class _MyHomePageState extends State<MyHomePage> {
                     horizontal: 17.0,
                   ),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, );
+                },
                 child: const Text(
                   'Start',
                   style: TextStyle(
