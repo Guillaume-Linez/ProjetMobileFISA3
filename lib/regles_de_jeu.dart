@@ -8,7 +8,7 @@ class ReglesDeJeu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFAE0000), // Ajout de la couleur de fond
+      backgroundColor: const Color(0xFFAE0000), // Ajout de la couleur de fond
       body: ListView(
         children: <Widget>[
           Padding(
@@ -27,10 +27,10 @@ class ReglesDeJeu extends StatelessWidget {
             ),
           ),
 
-          const Row(
+          Row(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
+            children: const <Widget>[
               Flexible(
                 flex: 1,
                 child: Padding(
@@ -50,8 +50,8 @@ class ReglesDeJeu extends StatelessWidget {
             ],
           ),
 
-          const Row(
-            children:  <Widget>[
+          Row(
+            children:  const <Widget>[
               Flexible(
                 flex: 1,
                 child: Padding(
@@ -70,8 +70,8 @@ class ReglesDeJeu extends StatelessWidget {
             ],
           ),
 
-          const Row(
-            children:  <Widget>[
+          Row(
+            children:  const <Widget>[
               Flexible(
                 flex: 1,
                 child: Padding(
@@ -90,8 +90,8 @@ class ReglesDeJeu extends StatelessWidget {
             ],
           ),
 
-          const Row(
-            children: <Widget>[
+          Row(
+            children: const <Widget>[
               Flexible(
                 flex: 1,
                 child: Padding(
@@ -110,8 +110,8 @@ class ReglesDeJeu extends StatelessWidget {
             ],
           ),
 
-          const Row(
-            children: <Widget>[
+          Row(
+            children: const <Widget>[
               Flexible(
                 flex: 1,
                 child: Padding(
@@ -130,8 +130,8 @@ class ReglesDeJeu extends StatelessWidget {
             ],
           ),
 
-          const Row(
-            children: <Widget>[
+          Row(
+            children: const <Widget>[
               Flexible(
                 flex: 1,
                 child: Padding(
