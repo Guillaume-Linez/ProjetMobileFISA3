@@ -38,7 +38,7 @@ class GrilleDuJeu extends StatelessWidget {
                         children: (j/2 == (j/2).floor()) ? [
                           Pion(height: 20, width: 20, type: 1, x: i, y: (j/2).floor()),
                         ] : [
-                          Barre(height: 20, width: 20, type: 1, x: i, y: j, taille: taille,),
+                          Barre(height: 30, width: 20, type: 1, x: i, y: j, taille: taille,),
                       ]),
                     ),
                 ] : [
