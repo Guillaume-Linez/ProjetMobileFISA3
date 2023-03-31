@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:masyu/regles_de_jeu.dart';
-import 'grille_du_jeu.dart';
 import 'afficher_classement.dart';
+import 'grille_du_jeu.dart';
 
 void main() {
   runApp(const MyApp());
@@ -107,7 +107,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ),
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)
+                  {
                     return const MyClassement();
                   }));
                 },
@@ -166,7 +167,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       _selectedButtonIndex = 0;
                     });
                   },
-                  child: Text(
+                  child: const Text(
                     '5x5',
                     style: TextStyle(
                       fontFamily: 'Pixeloid',
@@ -183,7 +184,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       _selectedButtonIndex = 1;
                     });
                   },
-                  child: Text(
+                  child: const Text(
                     '6x6',
                     style: TextStyle(
                       fontFamily: 'Pixeloid',
@@ -199,7 +200,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       _selectedButtonIndex = 2;
                     });
                   },
-                  child: Text(
+                  child: const Text(
                     '7x7',
                     style: TextStyle(
                       fontFamily: 'Pixeloid',
@@ -215,7 +216,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       _selectedButtonIndex = 3;
                     });
                   },
-                  child: Text(
+                  child: const Text(
                     '8x8',
                     style: TextStyle(
                       fontFamily: 'Pixeloid',
@@ -231,7 +232,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       _selectedButtonIndex = 4;
                     });
                   },
-                  child: Text(
+                  child: const Text(
                     '9x9',
                     style: TextStyle(
                       fontFamily: 'Pixeloid',
