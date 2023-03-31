@@ -24,19 +24,34 @@ class GrilleDuJeu extends StatelessWidget {
             ),
           ),
           child: 
-            Row(children: [
-              for (int i=0; i<taille; i++)
-                Column(
-                  children: [
-                for (int j=0; j<taille; j++)
+            Column(
+              children: [
+              for (int i=0; i<taille*2; i++)
+              Expanded(
+                child: 
+              Row(
+                  children: (i/2 == (i/2).floor()) ? [
+                for (int j=0; j<taille*2; j++)
+                    Expanded(child:
                       Row(
-                        children: [
-                        SizedBox(width: MediaQuery.of(context).size.width*0.020, height: MediaQuery.of(context).size.width*0.020),
-                        Barre(height: 20, width: 20, type: 1, x: i, y: j),
-                        Pion(height: 20, width: 20, type: 1, x: i, y: j),
-                        SizedBox(width: MediaQuery.of(context).size.width*0.020, height: MediaQuery.of(context).size.width*0.020),
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: (j/2 == (j/2).floor()) ? [
+                          Pion(height: 20, width: 20, type: 1, x: i, y: (j/2).floor()),
+                        ] : [
+                          Barre(height: 20, width: 20, type: 1, x: i, y: j, taille: taille,),
                       ]),
+                    ),
+                ] : [
+                  for (int j=0; j<taille*2; j++)
+                    Expanded(child:
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Barre(height: 20, width: 20, type: 1, x: i, y: j, taille: taille,),
+                      ]),
+                    ),
                 ],),
+              )
             ],)
           ),
       ),
