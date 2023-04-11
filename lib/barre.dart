@@ -39,9 +39,9 @@ class _BarreState extends State<Barre> {
       }
     } else {
       if (widget.y < widget.taille * 2 - 1 && widget.y / 2 == (widget.y / 2).floor() && widget.x < widget.taille*2-1) {
-        print("barre taille = ${widget.taille}");
-        print("barre x = ${widget.x}");
-        print("barre y = ${widget.y}");
+        // print("barre taille = ${widget.taille}");
+        // print("barre x = ${widget.x}");
+        // print("barre y = ${widget.y}");
         return GestureDetector(
           onTap: _barreInteraction,
           child :

@@ -18,18 +18,18 @@ class Pion extends StatelessWidget {
     if(typetmp == 2){
       customColor = const Color.fromARGB(255, 0, 0, 0);
       customColorBorder = const Color.fromARGB(255, 0, 0, 0);
-      print("Insertion du pion en ($x, $y) de type noir");
-      print(MediaQuery.of(context).size.width*0.8);
+      // print("Insertion du pion en ($x, $y) de type noir");
+      // print(MediaQuery.of(context).size.width*0.8);
       
     }else if(typetmp == 1){
       customColor = Color.fromARGB(255, 255, 255, 255);
       customColorBorder = Color.fromARGB(255, 181, 181, 181);
-      print("Insertion du pion en ($x, $y) de type blanc");
+      // print("Insertion du pion en ($x, $y) de type blanc");
       
     }else{
       customColor = Color.fromARGB(255, 255, 255, 255);
       customColorBorder = Color.fromARGB(255, 255, 255, 255);
-      print("Insertion du pion en ($x, $y) de type null");
+      // print("Insertion du pion en ($x, $y) de type null");
       
     }
     return Container(
