@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
+import 'globals.dart' as globals;
 
 class Pion extends StatelessWidget {
   final double width;
@@ -15,6 +16,8 @@ class Pion extends StatelessWidget {
     Color customColor;
     Color customColorBorder;
     int typetmp = Random().nextInt(3);
+    print("("+(x/2).floor().toString()+", "+y.toString()+"), type = "+typetmp.toString());
+    globals.matrice[(x/2).floor()][y]["typePion"] = typetmp;
     if(typetmp == 2){
       customColor = const Color.fromARGB(255, 0, 0, 0);
       customColorBorder = const Color.fromARGB(255, 0, 0, 0);
