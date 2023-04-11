@@ -15,9 +15,7 @@ class Niveau{
 }
 
 class _Reglages extends State<Reglages> {
-  // Remplacer la liste 'niveau' par la liste 'l' de type 'Niveau'
   final List<Niveau> l = <Niveau>[Niveau(' Facile',1),Niveau(' Moyen',2),Niveau(' Difficile',3)];
-  // Remplacer le type de 'dropdownvalue' par 'Niveau?' car on va stocker un objet de type 'Niveau' sélectionné dans la liste déroulante
   late Niveau? dropdownvalue = l[0];
 
   @override
