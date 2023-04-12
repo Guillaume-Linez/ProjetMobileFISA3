@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'dart:math';
 import 'globals.dart' as globals;
@@ -8,15 +10,18 @@ class Pion extends StatelessWidget {
   final int type;
   final int x;//donne les coordonnées pour insérer les lignes
   final int y;//donne les coordonnées pour insérer les lignes
+  final String jsonString;
 
-  Pion({this.width = 100, this.height = 100, required this.type, this.x = 0, this.y = 0});
+  Pion({this.width = 100, this.height = 100, required this.type, this.x = 0, this.y = 0, this.jsonString=""});
 
   @override
   Widget build(BuildContext context) {
     Color customColor;
     Color customColorBorder;
     int typetmp = Random().nextInt(3);
-    print("("+(x/2).floor().toString()+", "+y.toString()+"), type = "+typetmp.toString());
+    //print("("+(x/2).floor().toString()+", "+y.toString()+"), type = "+typetmp.toString());
+    print(jsonDecode(jsonString)[0]['liste']);
+
     globals.matrice[(x/2).floor()][y]["typePion"] = typetmp;
     if(typetmp == 2){
       customColor = const Color.fromARGB(255, 0, 0, 0);

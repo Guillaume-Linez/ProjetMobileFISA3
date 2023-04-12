@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:masyu/regles_de_jeu.dart';
 import 'afficher_classement.dart';
 import 'grille_du_jeu.dart';
+import 'globals.dart' as globals;
 
 void main() {
   runApp(const MyApp());
@@ -26,8 +27,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
-  int _selectedButtonIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -159,12 +158,12 @@ class _MyHomePageState extends State<MyHomePage> {
               children: [
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    primary: _selectedButtonIndex == 0 ? Colors.black : Colors.white,
-                    onPrimary: _selectedButtonIndex == 0 ? Colors.white : Colors.black,
+                    primary: globals.selectedButtonIndex == 0 ? Colors.black : Colors.white,
+                    onPrimary: globals.selectedButtonIndex == 0 ? Colors.white : Colors.black,
                   ),
                   onPressed: () {
                     setState(() {
-                      _selectedButtonIndex = 0;
+                      globals.selectedButtonIndex = 0;
                     });
                   },
                   child: const Text(
@@ -176,12 +175,12 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    primary: _selectedButtonIndex == 1 ? Colors.black : Colors.white,
-                    onPrimary: _selectedButtonIndex == 1 ? Colors.white : Colors.black,
+                    primary: globals.selectedButtonIndex == 1 ? Colors.black : Colors.white,
+                    onPrimary: globals.selectedButtonIndex == 1 ? Colors.white : Colors.black,
                   ),
                   onPressed: () {
                     setState(() {
-                      _selectedButtonIndex = 1;
+                      globals.selectedButtonIndex = 1;
                     });
                   },
                   child: const Text(
@@ -192,12 +191,12 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    primary: _selectedButtonIndex == 2 ? Colors.black : Colors.white,
-                    onPrimary: _selectedButtonIndex == 2 ? Colors.white : Colors.black,
+                    primary: globals.selectedButtonIndex == 2 ? Colors.black : Colors.white,
+                    onPrimary: globals.selectedButtonIndex == 2 ? Colors.white : Colors.black,
                   ),
                   onPressed: () {
                     setState(() {
-                      _selectedButtonIndex = 2;
+                      globals.selectedButtonIndex = 2;
                     });
                   },
                   child: const Text(
@@ -208,12 +207,12 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    primary: _selectedButtonIndex == 3 ? Colors.black : Colors.white,
-                    onPrimary: _selectedButtonIndex == 3 ? Colors.white : Colors.black,
+                    primary: globals.selectedButtonIndex == 3 ? Colors.black : Colors.white,
+                    onPrimary: globals.selectedButtonIndex == 3 ? Colors.white : Colors.black,
                   ),
                   onPressed: () {
                     setState(() {
-                      _selectedButtonIndex = 3;
+                      globals.selectedButtonIndex = 3;
                     });
                   },
                   child: const Text(
@@ -224,12 +223,12 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    primary: _selectedButtonIndex == 4 ? Colors.black : Colors.white,
-                    onPrimary: _selectedButtonIndex == 4 ? Colors.white : Colors.black,
+                    primary: globals.selectedButtonIndex == 4 ? Colors.black : Colors.white,
+                    onPrimary: globals.selectedButtonIndex == 4 ? Colors.white : Colors.black,
                   ),
                   onPressed: () {
                     setState(() {
-                      _selectedButtonIndex = 4;
+                      globals.selectedButtonIndex = 4;
                     });
                   },
                   child: const Text(

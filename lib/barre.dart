@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
+import 'globals.dart' as globals;
 
 class Barre extends StatefulWidget {
   final double width;
@@ -28,6 +29,7 @@ class _BarreState extends State<Barre> {
             children: [
               Positioned(
                 child: Container(
+                  padding: const EdgeInsets.all(100),
                   width: widget.width,
                   height: widget.height / 5,
                   decoration: BoxDecoration(color: widget.customColor),
@@ -49,6 +51,7 @@ class _BarreState extends State<Barre> {
           children: [
             Positioned(
               child: Container(
+                padding: const EdgeInsets.all(100),
                 width: widget.width / 5,
                 height: widget.height,
                 decoration: BoxDecoration(color: widget.customColor),
@@ -64,12 +67,24 @@ class _BarreState extends State<Barre> {
 
   void _barreInteraction() {
     setState(() {
-      if(widget.type == 0){
-        widget.customColor = Color.fromARGB(255, 255, 255, 255);
-        widget.type = 1;
-      }else{
-        widget.customColor = Color.fromARGB(255, 0, 0, 0);
-        widget.type = 0;
+      if (widget.x / 2 == (widget.x / 2).floor() ) {//horizontale donc barre1
+        globals.matrice[(widget.x/2).floor()][(widget.y/2).floor()]["barre1"] = widget.type;
+        if(widget.type == 0){
+          widget.customColor = Color.fromARGB(255, 255, 255, 255);
+          widget.type = 1;
+        }else{
+          widget.customColor = Color.fromARGB(255, 0, 0, 0);
+          widget.type = 0;
+        }
+      }else{//verticale donc barre2
+        globals.matrice[(widget.x/2).floor()][(widget.y/2).floor()]["barre2"] = widget.type;
+        if(widget.type == 0){
+          widget.customColor = Color.fromARGB(255, 255, 255, 255);
+          widget.type = 1;
+        }else{
+          widget.customColor = Color.fromARGB(255, 0, 0, 0);
+          widget.type = 0;
+        }
       }
     });
   }

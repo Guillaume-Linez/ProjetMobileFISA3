@@ -4,8 +4,20 @@ import 'shape_custom.dart';
 import 'dart:math';
 import 'globals.dart' as globals;
 
-int taille = 6;
-// List<List<int>> matrice = List.empty();
+import 'dart:convert';
+import 'dart:io';
+
+// String createOrderMessage() {
+//   var order = fetchUserOrder();
+//   return 'Your order is: $order';
+// }
+
+// Future<String> fetchUserOrder() =>
+//     // Imagine that this function is more complex and slow.
+//     Future.delayed(
+//       const Duration(seconds: 2),
+//       () => 'Large Latte',
+//     );
 
 class GrilleDuJeu extends StatefulWidget {
   @override
@@ -13,11 +25,16 @@ class GrilleDuJeu extends StatefulWidget {
 }
 
 class _GrilleDuJeuState extends State<GrilleDuJeu> {
-  // globals.matrice = List.generate(taille, (_) => List.generate(taille, (_) => 0));
-  int randomInt = Random().nextInt(3);
 
+  final Future<String> _jsonData = globals.readJson();
+
+  int randomInt = Random().nextInt(3);
+  
   @override
   Widget build(BuildContext context) {
+    int taille = globals.getSelectedValue();
+    String dificulty = "moyen";
+    print(taille);
     List<List<Map<String, int>>> tableau = List.generate(
       taille,
       (_) => List.generate(
@@ -43,8 +60,12 @@ class _GrilleDuJeuState extends State<GrilleDuJeu> {
         title: const Text('Masyu'),
       ),
       body: Center(
-        child:Column(
-          children: [Container(
+        child: FutureBuilder<String>(
+        future: _jsonData, // a previously-obtained Future<String> or null
+        builder: (BuildContext context, AsyncSnapshot<String> snapshot) {
+          List<Widget> children;
+          if (snapshot.hasData) {
+            children = [Container(
             height: MediaQuery.of(context).size.width*0.8,
             width: MediaQuery.of(context).size.width*0.8,
             decoration: BoxDecoration(
@@ -64,7 +85,7 @@ class _GrilleDuJeuState extends State<GrilleDuJeu> {
                           Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: (j/2 == (j/2).floor()) ? [
-                                Pion(height: 20, width: 20, type: 1, x: i, y: (j/2).floor()),
+                                Pion(height: 20, width: 20, type: 1, x: i, y: (j/2).floor(), jsonString: snapshot.data.toString()),
                               ] : [
                                 Barre(height: 30, width: 20, type: 1, x: i, y: j, taille: taille,),
                               ]),
@@ -87,14 +108,106 @@ class _GrilleDuJeuState extends State<GrilleDuJeu> {
           TextButton(
             onPressed: VerifGrille,
             child: const Text('Verification de la grille'),
-          )],
-        ),
+          ),
+          Text(getGoodGrid(taille, dificulty, snapshot.data.toString()).toString())
+          ];
+          } else if (snapshot.hasError) {
+            children = <Widget>[
+              const Icon(
+                Icons.error_outline,
+                color: Colors.red,
+                size: 60,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 16),
+                child: Text('Error: ${snapshot.error}'),
+              ),
+            ];
+          } else {
+            children = const <Widget>[
+              SizedBox(
+                width: 60,
+                height: 60,
+                child: CircularProgressIndicator(),
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: 16),
+                child: Text('Awaiting result...'),
+              ),
+            ];
+          }
+          return Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: children,
+            ),
+          );
+        },
+      ),
+        // Column(
+        //   children: [Container(
+        //     height: MediaQuery.of(context).size.width*0.8,
+        //     width: MediaQuery.of(context).size.width*0.8,
+        //     decoration: BoxDecoration(
+        //       border: Border.all(
+        //         color: Colors.black,
+        //         width: 2,
+        //       ),
+        //     ),
+        //     child: Column(
+        //       children: [
+        //         for (int i=0; i<taille*2; i++)
+        //           Expanded(
+        //             child: Row(
+        //               children: (i/2 == (i/2).floor()) ? [
+        //                 for (int j=0; j<taille*2; j++)
+        //                   Expanded(child:
+        //                   Row(
+        //                       mainAxisAlignment: MainAxisAlignment.center,
+        //                       children: (j/2 == (j/2).floor()) ? [
+        //                         Pion(height: 20, width: 20, type: 1, x: i, y: (j/2).floor()),
+        //                       ] : [
+        //                         Barre(height: 30, width: 20, type: 1, x: i, y: j, taille: taille,),
+        //                       ]),
+        //                   ),
+        //               ] : [
+        //                 for (int j=0; j<taille*2; j++)
+        //                   Expanded(child:
+        //                   Row(
+        //                       mainAxisAlignment: MainAxisAlignment.center,
+        //                       children: [
+        //                         Barre(height: 20, width: 20, type: 1, x: i, y: j, taille: taille,),
+        //                       ]),
+        //                   ),
+        //               ],
+        //             ),
+        //           )
+        //       ],
+        //     ),
+        //   ),
+        //   TextButton(
+        //     onPressed: VerifGrille,
+        //     child: const Text('Verification de la grille'),
+        //   )],
+        // ),
       )
     );
   }
 
   void VerifGrille(){
-    print(globals.matrice);
+    debugPrint(globals.matrice.toString(), wrapWidth: 1024);
+  }
+
+  List getGoodGrid(int taille, String dificulty, String jsonString){
+    List<dynamic> jsonData = jsonDecode(jsonString);
+    for(int i=0; i<jsonData.length; i++){
+      if(jsonData[i]['taille'] == taille){
+        if(jsonData[i]["difficulte"] == dificulty){
+          return jsonData[i]['liste'];
+        }
+      }
+    }
+    return[];
   }
 
 }
