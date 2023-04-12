@@ -155,6 +155,7 @@ class _MyHomePageState extends State<MyHomePage> {
             padding: const EdgeInsets.only(top: 50),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
+              children: [Row(
               children: [
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
@@ -239,6 +240,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ],
             ),
+            ],
+            )
           ),
       ],
       ),

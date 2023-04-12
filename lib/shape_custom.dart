@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'dart:math';
 import 'globals.dart' as globals;
+import 'grille_du_jeu.dart';
 
 class Pion extends StatelessWidget {
   final double width;
@@ -18,12 +19,12 @@ class Pion extends StatelessWidget {
   Widget build(BuildContext context) {
     Color customColor;
     Color customColorBorder;
-    int typetmp = Random().nextInt(3);
-    //print("("+(x/2).floor().toString()+", "+y.toString()+"), type = "+typetmp.toString());
-    print(jsonDecode(jsonString)[0]['liste']);
+    int typetmp = globals.getGoodGrid(globals.getSelectedValue(), "facile", jsonString)[(x/2).floor()][y];
+    print("("+(x/2).floor().toString()+", "+y.toString()+"), type = "+typetmp.toString());
+    //print(jsonDecode(jsonString)[0]['liste'][(x/2).floor()][y]);
 
     globals.matrice[(x/2).floor()][y]["typePion"] = typetmp;
-    if(typetmp == 2){
+    if(typetmp == -1){
       customColor = const Color.fromARGB(255, 0, 0, 0);
       customColorBorder = const Color.fromARGB(255, 0, 0, 0);
       // print("Insertion du pion en ($x, $y) de type noir");

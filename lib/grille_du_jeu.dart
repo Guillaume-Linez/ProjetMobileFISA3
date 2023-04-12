@@ -27,11 +27,13 @@ class GrilleDuJeu extends StatefulWidget {
 class _GrilleDuJeuState extends State<GrilleDuJeu> {
 
   final Future<String> _jsonData = globals.readJson();
-
-  int randomInt = Random().nextInt(3);
   
   @override
   Widget build(BuildContext context) {
+
+    double heightBarre = 30;
+    double widthBarre = 20;
+
     int taille = globals.getSelectedValue();
     String dificulty = "moyen";
     print(taille);
@@ -87,7 +89,7 @@ class _GrilleDuJeuState extends State<GrilleDuJeu> {
                               children: (j/2 == (j/2).floor()) ? [
                                 Pion(height: 20, width: 20, type: 1, x: i, y: (j/2).floor(), jsonString: snapshot.data.toString()),
                               ] : [
-                                Barre(height: 30, width: 20, type: 1, x: i, y: j, taille: taille,),
+                                Barre(height: heightBarre, width: widthBarre, type: 1, x: i, y: j, taille: taille,),
                               ]),
                           ),
                       ] : [
@@ -96,7 +98,7 @@ class _GrilleDuJeuState extends State<GrilleDuJeu> {
                           Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Barre(height: 20, width: 20, type: 1, x: i, y: j, taille: taille,),
+                                Barre(height: widthBarre, width: heightBarre, type: 1, x: i, y: j, taille: taille,),
                               ]),
                           ),
                       ],
@@ -109,7 +111,11 @@ class _GrilleDuJeuState extends State<GrilleDuJeu> {
             onPressed: VerifGrille,
             child: const Text('Verification de la grille'),
           ),
-          Text(getGoodGrid(taille, dificulty, snapshot.data.toString()).toString())
+          TextButton(
+            onPressed: SaveTemps,
+            child: const Text('Sauvegarde du score'),
+          ),
+          Text(globals.getGoodGrid(taille, dificulty, snapshot.data.toString()).toString())
           ];
           } else if (snapshot.hasError) {
             children = <Widget>[
@@ -144,70 +150,16 @@ class _GrilleDuJeuState extends State<GrilleDuJeu> {
           );
         },
       ),
-        // Column(
-        //   children: [Container(
-        //     height: MediaQuery.of(context).size.width*0.8,
-        //     width: MediaQuery.of(context).size.width*0.8,
-        //     decoration: BoxDecoration(
-        //       border: Border.all(
-        //         color: Colors.black,
-        //         width: 2,
-        //       ),
-        //     ),
-        //     child: Column(
-        //       children: [
-        //         for (int i=0; i<taille*2; i++)
-        //           Expanded(
-        //             child: Row(
-        //               children: (i/2 == (i/2).floor()) ? [
-        //                 for (int j=0; j<taille*2; j++)
-        //                   Expanded(child:
-        //                   Row(
-        //                       mainAxisAlignment: MainAxisAlignment.center,
-        //                       children: (j/2 == (j/2).floor()) ? [
-        //                         Pion(height: 20, width: 20, type: 1, x: i, y: (j/2).floor()),
-        //                       ] : [
-        //                         Barre(height: 30, width: 20, type: 1, x: i, y: j, taille: taille,),
-        //                       ]),
-        //                   ),
-        //               ] : [
-        //                 for (int j=0; j<taille*2; j++)
-        //                   Expanded(child:
-        //                   Row(
-        //                       mainAxisAlignment: MainAxisAlignment.center,
-        //                       children: [
-        //                         Barre(height: 20, width: 20, type: 1, x: i, y: j, taille: taille,),
-        //                       ]),
-        //                   ),
-        //               ],
-        //             ),
-        //           )
-        //       ],
-        //     ),
-        //   ),
-        //   TextButton(
-        //     onPressed: VerifGrille,
-        //     child: const Text('Verification de la grille'),
-        //   )],
-        // ),
       )
     );
   }
 
   void VerifGrille(){
     debugPrint(globals.matrice.toString(), wrapWidth: 1024);
+    globals.verifierRegles(globals.matrice);
   }
 
-  List getGoodGrid(int taille, String dificulty, String jsonString){
-    List<dynamic> jsonData = jsonDecode(jsonString);
-    for(int i=0; i<jsonData.length; i++){
-      if(jsonData[i]['taille'] == taille){
-        if(jsonData[i]["difficulte"] == dificulty){
-          return jsonData[i]['liste'];
-        }
-      }
-    }
-    return[];
+  void SaveTemps(){
+    globals.saveJson({"alo":"aalo"}, "assets/res/test.json");
   }
-
 }

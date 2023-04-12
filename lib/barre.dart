@@ -31,7 +31,7 @@ class _BarreState extends State<Barre> {
                 child: Container(
                   padding: const EdgeInsets.all(100),
                   width: widget.width,
-                  height: widget.height / 5,
+                  height: widget.height / 3,
                   decoration: BoxDecoration(color: widget.customColor),
                 ),
               ),
@@ -52,7 +52,7 @@ class _BarreState extends State<Barre> {
             Positioned(
               child: Container(
                 padding: const EdgeInsets.all(100),
-                width: widget.width / 5,
+                width: widget.width / 3,
                 height: widget.height,
                 decoration: BoxDecoration(color: widget.customColor),
               ),
