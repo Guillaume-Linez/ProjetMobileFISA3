@@ -82,7 +82,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   }));
                 },
                 child: const Text(
-                  'start',
+                  'Jouer',
                   style: TextStyle(
                     fontFamily: 'Pixeloid',
                     fontSize: (50),
@@ -233,6 +233,63 @@ class _MyHomePageState extends State<MyHomePage> {
                   },
                   child: const Text(
                     '9x9',
+                    style: TextStyle(
+                      fontFamily: 'Pixeloid',
+                    ),),
+                ),
+              ],
+            ),
+          ),
+          Container(
+            padding: const EdgeInsets.only(top: 100),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    primary: globals.selectedDifficulty == 0 ? Colors.black : Colors.white,
+                    onPrimary: globals.selectedDifficulty == 0 ? Colors.white : Colors.black,
+                  ),
+                  onPressed: () {
+                    setState(() {
+                      globals.selectedDifficulty = 0;
+                    });
+                  },
+                  child: const Text(
+                    'Facile',
+                    style: TextStyle(
+                      fontFamily: 'Pixeloid',
+                    ),
+                  ),
+                ),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    primary: globals.selectedDifficulty == 1 ? Colors.black : Colors.white,
+                    onPrimary: globals.selectedDifficulty == 1 ? Colors.white : Colors.black,
+                  ),
+                  onPressed: () {
+                    setState(() {
+                      globals.selectedDifficulty = 1;
+                    });
+                  },
+                  child: const Text(
+                    'Moyen',
+                    style: TextStyle(
+                      fontFamily: 'Pixeloid',
+                    ),),
+                ),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    primary: globals.selectedDifficulty == 2 ? Colors.black : Colors.white,
+                    onPrimary: globals.selectedDifficulty == 2 ? Colors.white : Colors.black,
+                  ),
+                  onPressed: () {
+                    setState(() {
+                      globals.selectedDifficulty = 2;
+                    });
+                  },
+                  child: const Text(
+                    'Difficile',
                     style: TextStyle(
                       fontFamily: 'Pixeloid',
                     ),),
