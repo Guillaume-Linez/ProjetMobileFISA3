@@ -45,12 +45,6 @@ Future<String> readJson() async {
   return jsonString;
 }
 
-void saveJson(Map<String, dynamic> map, String filePath) {
-  final file = File(filePath);
-  final encodedMap = json.encode(map);
-  file.writeAsStringSync(encodedMap);
-}
-
 bool verifierRegles(List<List<Map<String, int>>> grille) {
       int taille = grille.length;
       for (int x = 0; x < taille; x++) {

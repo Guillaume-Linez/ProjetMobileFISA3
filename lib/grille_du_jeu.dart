@@ -111,10 +111,6 @@ class _GrilleDuJeuState extends State<GrilleDuJeu> {
             onPressed: VerifGrille,
             child: const Text('Verification de la grille'),
           ),
-          TextButton(
-            onPressed: SaveTemps,
-            child: const Text('Sauvegarde du score'),
-          ),
           Text(globals.getGoodGrid(taille, dificulty, snapshot.data.toString()).toString())
           ];
           } else if (snapshot.hasError) {
@@ -157,9 +153,5 @@ class _GrilleDuJeuState extends State<GrilleDuJeu> {
   void VerifGrille(){
     debugPrint(globals.matrice.toString(), wrapWidth: 1024);
     globals.verifierRegles(globals.matrice);
-  }
-
-  void SaveTemps(){
-    globals.saveJson({"alo":"aalo"}, "assets/res/test.json");
   }
 }
