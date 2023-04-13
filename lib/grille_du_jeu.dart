@@ -291,7 +291,7 @@ class _GrilleDuJeuState extends State<GrilleDuJeu> {
             ),
           ),
           Positioned(
-            bottom: 180,
+            top: MediaQuery.of(context).size.height * 0.1,
             left: 0,
             right: 0,
             child: Container(
@@ -310,7 +310,7 @@ class _GrilleDuJeuState extends State<GrilleDuJeu> {
             ),
           ),
           Positioned(
-            bottom: 190,
+            top: MediaQuery.of(context).size.height * 0.1 + 10,
             left: MediaQuery.of(context).size.width * 0.2,
             child: Container(
               width: 30,
@@ -342,7 +342,7 @@ class _GrilleDuJeuState extends State<GrilleDuJeu> {
             ),
           ),
           Positioned(
-            bottom: 180,
+            top: MediaQuery.of(context).size.height * 0.1,
             right: MediaQuery.of(context).size.width * 0.2,
             child: Container(
               child: TextButton(
