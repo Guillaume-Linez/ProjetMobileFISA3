@@ -191,6 +191,14 @@ bool verifierRegles(List<List<Map<String, int>>> grille) {
                   return false;
                 }
               }
+              if(x==0 && y==taille-1 && pion['barre2']==1 )
+              {
+                if(grille[x][y-2]['barre1']==0 || grille[x+1][y]['barre2']==0)
+                {
+                  print('le pion : '+pion.toString()+' est un pion noir et n\'a pas 2 voisins succèssifs');
+                  return false;
+                }
+              }
             }
 
             //on compte le nb voisins

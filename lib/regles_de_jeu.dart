@@ -137,7 +137,7 @@ class ReglesDeJeu extends StatelessWidget {
                 child: Padding(
                   padding: EdgeInsets.only(left: 35.0),
                   child: Text(
-                    '\nLes pions noirs sont traversés par un angle droit.\n\nLes branches doivent rester droites dans au moins deux cellules qui succèdent.',
+                    '\nLes pions noirs sont traversés par un angle droit.\n\nLes branches doivent rester droites dans au moins deux cellules qui succèdent.\n\n\n',
                     style: TextStyle(
                       fontSize: 22,
                       fontFamily: 'Free Pixel',

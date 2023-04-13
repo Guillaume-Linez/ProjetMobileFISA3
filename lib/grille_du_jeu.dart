@@ -322,6 +322,22 @@ void dispose() {
             ),
           ),
           Positioned(
+            top: MediaQuery.of(context).size.height * 0.05,
+            left: MediaQuery.of(context).size.width * 0.05,
+            child: Container(
+              width: 30,
+              height: 30,
+              child: IconButton( // Ajout d'un bouton retour
+                  icon: const Icon(Icons.arrow_circle_left),
+                  iconSize: 30,
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                ),
+            ),
+          ),
+          
+          Positioned(
             top: MediaQuery.of(context).size.height * 0.1,
             right: MediaQuery.of(context).size.width * 0.2,
             child: Container(
