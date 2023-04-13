@@ -7,6 +7,7 @@ List<List<Map<String, int>>> matrice = [];
 
 int selectedButtonIndex = 0;
 int selectedDifficulty=0;
+double screenSize = 0;
 
 List getGoodGrid(int taille, String dificulty, String jsonString){
     List<dynamic> jsonData = jsonDecode(jsonString);

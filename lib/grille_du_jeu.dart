@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'barre.dart';
 import 'shape_custom.dart';
-import 'dart:math';
 import 'globals.dart' as globals;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:async';
@@ -68,12 +67,12 @@ class _GrilleDuJeuState extends State<GrilleDuJeu> {
   
   @override
   Widget build(BuildContext context) {
-
-    double heightBarre = 30;
-    double widthBarre = 20;
+    globals.screenSize = MediaQuery.of(context).size.width;
 
     int taille = globals.getSelectedValue();
     String dificulty = globals.getSelectedDifficulty();
+    double heightBarre = 30;
+    double widthBarre = 350/taille;
     print(taille);
     List<List<Map<String, int>>> tableau = List.generate(
       taille,
@@ -114,31 +113,48 @@ class _GrilleDuJeuState extends State<GrilleDuJeu> {
                 width: 2,
               ),
             ),
-            child: Column(
+            child: Stack(
               children: [
                 for (int i=0; i<taille*2; i++)
-                  Expanded(
-                    child: Row(
+                  Container(
+                    child: Stack(
                       children: (i/2 == (i/2).floor()) ? [
-                        for (int j=0; j<taille*2; j++)
-                          Expanded(child:
-                          Row(
-                              //mainAxisAlignment: MainAxisAlignment.center,
-                              children: (j/2 == (j/2).floor()) ? [
-                                Pion(height: 20, width: 20, type: 1, x: i, y: (j/2).floor(), jsonString: snapshot.data.toString()),
-                              ] : [
-                                Barre(height: heightBarre, width: widthBarre, type: 1, x: i, y: j, taille: taille,),
-                              ]),
-                          ),
+                        // rien
                       ] : [
                         for (int j=0; j<taille*2; j++)
-                          Expanded(child:
-                          Row(
-                              //mainAxisAlignment: MainAxisAlignment.center,
+                          Container(
+                            child:Stack(
                               children: [
                                 Barre(height: widthBarre, width: heightBarre, type: 1, x: i, y: j, taille: taille,),
                               ]),
                           ),
+                      ],
+                    ),
+                  ),
+                  for (int i=0; i<taille*2; i++)
+                  Container(
+                    child: Stack(
+                      children: (i/2 == (i/2).floor()) ? [
+                        for (int j=0; j<taille*2; j++)
+                          Container(
+                            child:Stack(
+                              children: (j/2 == (j/2).floor()) ? [
+                                //rien
+                              ] : [
+                                Barre(height: heightBarre, width: widthBarre, type: 1, x: i, y: j, taille: taille,),
+                              ]),
+                          ),
+                          for (int j=0; j<taille*2; j++)
+                          Container(
+                            child:Stack(
+                              children: (j/2 == (j/2).floor()) ? [
+                                Pion(height: 20, width: 20, type: 1, x: i, y: (j/2).floor(), jsonString: snapshot.data.toString()),
+                              ] : [
+                                //rien
+                              ]),
+                          ),
+                      ] : [
+                        // rien
                       ],
                     ),
                   )

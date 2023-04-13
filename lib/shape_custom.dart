@@ -19,8 +19,9 @@ class Pion extends StatelessWidget {
   Widget build(BuildContext context) {
     Color customColor;
     Color customColorBorder;
+    double tailleBordure = width/5;
     int typetmp = globals.getGoodGrid(globals.getSelectedValue(), globals.getSelectedDifficulty(), jsonString)[(x/2).floor()][y];
-    print("("+(x/2).floor().toString()+", "+y.toString()+"), type = "+typetmp.toString());
+    print("("+(x/2).floor().toString()+", "+y.toString()+"), type = "+typetmp.toString()+" screensize = "+globals.screenSize.toString());
     //print(jsonDecode(jsonString)[0]['liste'][(x/2).floor()][y]);
 
     globals.matrice[(x/2).floor()][y]["typePion"] = typetmp;
@@ -36,22 +37,29 @@ class Pion extends StatelessWidget {
       // print("Insertion du pion en ($x, $y) de type blanc");
       
     }else{
-      customColor = Color.fromARGB(255, 255, 255, 255);
+      customColor = Color.fromARGB(255, 161, 98, 98);
       customColorBorder = Color.fromARGB(255, 255, 255, 255);
+      tailleBordure = width/3;
       // print("Insertion du pion en ($x, $y) de type null");
       
     }
-    return Container(
+    return 
+    Positioned(
+      top: ((globals.screenSize*0.8)/globals.getSelectedValue() * (x/2).floor() +(globals.screenSize*0.8)/globals.getSelectedValue()/4).toDouble(),
+      left: ((globals.screenSize*0.8)/globals.getSelectedValue() * y + (globals.screenSize*0.8)/globals.getSelectedValue()/4).toDouble(),
+      child: 
+      Container(
       width: width,
       height: height,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         border: Border.all(
         color: customColorBorder,
-        width: width/5,
+        width: tailleBordure,
         ),
         color: customColor
       ),
+    )
     );
   }
 }

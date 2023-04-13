@@ -28,6 +28,8 @@ class _BarreState extends State<Barre> {
           child: Stack(
             children: [
               Positioned(
+                top: ((globals.screenSize*0.8)/globals.getSelectedValue() * (widget.x/2).floor() +(globals.screenSize*0.8)/globals.getSelectedValue()/4 + widget.height/6).toDouble(),
+                left: (((globals.screenSize*0.8)/globals.getSelectedValue() * (widget.y/2).floor() + (globals.screenSize*0.8)/globals.getSelectedValue()/4) + (globals.screenSize*0.8)/globals.getSelectedValue()/5).toDouble(),
                 child: Container(
                   padding: const EdgeInsets.all(100),
                   width: widget.width,
@@ -50,6 +52,8 @@ class _BarreState extends State<Barre> {
         Stack(
           children: [
             Positioned(
+              top: ((globals.screenSize*0.8)/globals.getSelectedValue() * (widget.x/2).floor() +(globals.screenSize*0.8)/globals.getSelectedValue()/4 + widget.height/6).toDouble(),
+              left: (((globals.screenSize*0.8)/globals.getSelectedValue() * (widget.y/2).floor() + (globals.screenSize*0.8)/globals.getSelectedValue()/4) + (globals.screenSize*0.8)/globals.getSelectedValue()/13).toDouble(),
               child: Container(
                 padding: const EdgeInsets.all(100),
                 width: widget.width / 3,
