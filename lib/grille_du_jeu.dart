@@ -35,7 +35,7 @@ class _GrilleDuJeuState extends State<GrilleDuJeu> {
     double widthBarre = 20;
 
     int taille = globals.getSelectedValue();
-    String dificulty = "moyen";
+    String dificulty = globals.getSelectedDifficulty();
     print(taille);
     List<List<Map<String, int>>> tableau = List.generate(
       taille,
@@ -85,7 +85,7 @@ class _GrilleDuJeuState extends State<GrilleDuJeu> {
                         for (int j=0; j<taille*2; j++)
                           Expanded(child:
                           Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
+                              //mainAxisAlignment: MainAxisAlignment.center,
                               children: (j/2 == (j/2).floor()) ? [
                                 Pion(height: 20, width: 20, type: 1, x: i, y: (j/2).floor(), jsonString: snapshot.data.toString()),
                               ] : [
@@ -96,7 +96,7 @@ class _GrilleDuJeuState extends State<GrilleDuJeu> {
                         for (int j=0; j<taille*2; j++)
                           Expanded(child:
                           Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
+                              //mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Barre(height: widthBarre, width: heightBarre, type: 1, x: i, y: j, taille: taille,),
                               ]),

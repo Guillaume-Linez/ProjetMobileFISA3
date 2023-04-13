@@ -19,7 +19,7 @@ class Pion extends StatelessWidget {
   Widget build(BuildContext context) {
     Color customColor;
     Color customColorBorder;
-    int typetmp = globals.getGoodGrid(globals.getSelectedValue(), "facile", jsonString)[(x/2).floor()][y];
+    int typetmp = globals.getGoodGrid(globals.getSelectedValue(), globals.getSelectedDifficulty(), jsonString)[(x/2).floor()][y];
     print("("+(x/2).floor().toString()+", "+y.toString()+"), type = "+typetmp.toString());
     //print(jsonDecode(jsonString)[0]['liste'][(x/2).floor()][y]);
 
