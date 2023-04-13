@@ -87,7 +87,7 @@ bool verifierRegles(List<List<Map<String, int>>> grille) {
                 }
               }
               
-              if(x>0 && grille[x][y-1]['barre1']==1 && grille[x-1][y]['barre2']==1)
+              if(x>0 && y>0 && grille[x][y-1]['barre1']==1 && grille[x-1][y]['barre2']==1)
               {
                 print('Le pion : '+pion.toString()+' est un pion blanc et est sur une intersection');
                 return false;
@@ -107,11 +107,11 @@ bool verifierRegles(List<List<Map<String, int>>> grille) {
               //même chose mais pour l'extreme droite
               if(y<=taille-1 && pion['barre2']==1)
               {
-                if(x>0 && x<taille-1 && grille[x-1][y-1]['barre1']==1)
+                if(x>0 && x<taille-1 && y>0 && grille[x-1][y-1]['barre1']==1)
                 {
                   virageBlanc=true;
                 }
-                if(x>0 && x<taille-1 && grille[x+1][y-1]['barre1']==1)
+                if(x>0 && x<taille-1 && y>0 &&grille[x+1][y-1]['barre1']==1)
                 {
                   virageBlanc=true;
                 }
