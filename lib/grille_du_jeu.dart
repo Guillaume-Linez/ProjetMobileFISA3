@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'timer.dart';
 import 'barre.dart';
 import 'shape_custom.dart';
 import 'globals.dart' as globals;
@@ -16,53 +17,22 @@ class GrilleDuJeu extends StatefulWidget {
 class _GrilleDuJeuState extends State<GrilleDuJeu> {
 
   final Future<String> _jsonData = globals.readJson();
+  final GlobalKey<GameTimerState> timerKey = GlobalKey<GameTimerState>();
 
-  StreamSubscription<int>? _timerSubscription;
-  int _timeElapsed = 0;
-  bool _gameWon = false;
-  bool _timerRunning = false;
-  int _pause = 0;
-  String _timerValue = 'mm:ss';
+  
   bool _isDarkMode = false;
   Color fond = Colors.white;
 
   set couleurBarre(couleurBarre) {}
 
-
-  void _startTimer() {
-    _timerSubscription?.cancel();
-    _timerSubscription =
-        Stream.periodic(Duration(seconds: 1), (count) => count + 1)
-            .takeWhile((count) => !_gameWon)
-            .listen((count) {});
+@override
+void dispose() {
+  if (timerKey.currentState != null) {
+    timerKey.currentState!.stopTimer();
   }
+  super.dispose();
+}
 
-  void _stopTimer1() {
-    _timerSubscription?.cancel();
-  }
-
-  Future<void> addToSharedPreferencesList(String key, String value) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    List<String> list = prefs.getStringList(key) ?? [
-    ]; // Obtenez la liste actuelle ou une liste vide si elle n'existe pas encore
-    list.add(_timerValue); // Ajoutez l'élément à la liste
-    await prefs.setStringList(key, list); // Enregistrez la liste mise à jour
-  }
-
-  Future<void> _stopTimer() async {
-    _timerSubscription?.cancel();
-    addToSharedPreferencesList("Historique", _getTimeString(_timeElapsed));
-  }
-
-  String _getTimeString(int timeElapsed) {
-    int minutes = timeElapsed ~/ 60;
-    int seconds = timeElapsed % 60;
-    _timerValue = '${globals.getSelectedValueStr()} <${globals
-        .getSelectedDifficulty()}> ${minutes.toString().padLeft(
-        2, '0')}:${seconds.toString().padLeft(2, '0')}';
-    return '${minutes.toString().padLeft(2, '0')}:${seconds.toString().padLeft(
-        2, '0')}';
-  }
 
 
   @override
@@ -110,6 +80,7 @@ class _GrilleDuJeuState extends State<GrilleDuJeu> {
       backgroundColor: fond,
       body: Stack(
         children: <Widget>[
+           
           Container(
             alignment: Alignment.center,
             child: FutureBuilder<String>(
@@ -236,6 +207,7 @@ class _GrilleDuJeuState extends State<GrilleDuJeu> {
               },
             ),
           ),
+          
           Positioned(
             bottom: 110,
             left: 0,
@@ -300,7 +272,7 @@ class _GrilleDuJeuState extends State<GrilleDuJeu> {
                 onPressed: (null),
                 child: Text(
                   taille.toString() + 'x' + taille.toString(),
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontFamily: 'Public Pixel',
                     fontSize: 20,
                     color: Colors.black,
@@ -308,6 +280,14 @@ class _GrilleDuJeuState extends State<GrilleDuJeu> {
                 ),
               ),
             ),
+          ),
+          Positioned(
+            top: MediaQuery.of(context).size.height * 0.2+20,
+            left: 0,
+            right: 0,
+            child : Container(alignment: Alignment.center, child: GameTimer(
+              key: timerKey,
+            ),)  
           ),
           Positioned(
             top: MediaQuery.of(context).size.height * 0.1 + 10,
@@ -352,22 +332,20 @@ class _GrilleDuJeuState extends State<GrilleDuJeu> {
                 style: TextButton.styleFrom(
                   backgroundColor: Colors.black,
                   elevation: 20,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20.0),
-                    side: const BorderSide(color: Colors.black),
-                  ),
+                  shape: CircleBorder(),
+                  padding: EdgeInsets.all(0), // suppression des marges intérieures
+                  fixedSize: Size(40, 40), // taille du bouton
                 ),
-                child: Text(
-                  'x',
-                  style: TextStyle(
-                    fontFamily: 'Public Pixel',
-                    fontSize: 20,
-                    color: Colors.white,
-                  ),
+                child: Icon(
+                  _isDarkMode ? Icons.light_mode : Icons.dark_mode, // icône selon le mode actuel
+                  color: Colors.white,
+                  size: 20, // taille de l'icône
                 ),
-              ),
-            ),
+              ),            
+            ),          
           ),
+
+
         ],
       ),
     );
@@ -393,13 +371,24 @@ class _GrilleDuJeuState extends State<GrilleDuJeu> {
   }
 
   void VerifGrille() {
-    debugPrint(globals.matrice.toString(), wrapWidth: 1024);
-    globals.verifierRegles(globals.matrice);
-    if (globals.verifierRegles(globals.matrice)) {
-      _stopTimer();
-    }
-    if (!globals.verifierRegles(globals.matrice)) {
-      _stopTimer1();
-    }
+  debugPrint(globals.matrice.toString(), wrapWidth: 1024);
+  bool victoire = globals.verifierRegles(globals.matrice);
+  if (victoire) {
+    timerKey.currentState!.stopTimer();
   }
+  showDialog(
+    context: context,
+    builder: (_) => AlertDialog(
+      title: Text(victoire ? "Victoire" : "Défaite"),
+      content: Text(victoire ? "Bravo, vous avez gagné !" : "Dommage, vous avez perdu, veuillez réessayer !"),
+      actions: [
+        TextButton(
+          onPressed: () => Navigator.of(context).pop(),
+          child: Text("OK"),
+        ),
+      ],
+    ),
+  );
+}
+
 }

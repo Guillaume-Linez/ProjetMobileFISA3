@@ -14,10 +14,15 @@ class _MyClassementState extends State<MyClassement> {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
-        title: Text("Classement",style:TextStyle(color: Colors.black,fontFamily: "Pixeloid",fontWeight:FontWeight.bold,fontSize: 35)),
-        backgroundColor: Colors.red,
+        title: Text("Classement",
+            style: TextStyle(
+                color: Colors.black,
+                fontFamily: "Pixeloid",
+                fontWeight: FontWeight.bold,
+                fontSize: 35)),
+        backgroundColor: const Color(0xFFAE0000),
         leading: IconButton(
-          icon: Icon(Icons.arrow_circle_left,color: Colors.black),
+          icon: Icon(Icons.arrow_circle_left, color: Colors.black),
           iconSize: 30,
           onPressed: () {
             Navigator.pop(context);
@@ -29,14 +34,23 @@ class _MyClassementState extends State<MyClassement> {
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             List<String> list = snapshot.data!;
+            sortListByTime(list);
             return ListView.builder(
               itemCount: list.length,
               itemBuilder: (context, index) {
                 return Card(
-                  color: Color.fromRGBO(100, 0, 1, 1),
+                  color: Colors.white,
                   child: Padding(
                     padding: EdgeInsets.all(16.0),
-                    child: Text(list[index]),
+                    child: Text(
+                      "${index + 1}. ${list[index]}",
+                      style: const TextStyle(
+                        fontFamily: 'Free Pixel',
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18,
+                        color: Colors.black,
+                      ),
+                    ),
                   ),
                 );
               },
@@ -58,12 +72,27 @@ class _MyClassementState extends State<MyClassement> {
     );
   }
 
-
-
   Future<List<String>> getSharedPreferencesList(String key) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     List<String> list = prefs.getStringList(key) ?? [];
     return list;
   }
-}
 
+  void sortListByTime(List<String> list) {
+    list.sort((a, b) {
+      String aTime = a.split("  ")[2];
+      String bTime = b.split("  ")[2];
+      return Duration(
+              minutes: int.parse(aTime.split(":")[0]),
+              seconds: int.parse(aTime.split(":")[1]))
+          .compareTo(Duration(
+              minutes: int.parse(bTime.split(":")[0]),
+              seconds: int.parse(bTime.split(":")[1])));
+    });
+  }
+
+  Future<void> clearSharedPreferencesList(String key) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.remove(key);
+  }
+}
