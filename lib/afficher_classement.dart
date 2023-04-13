@@ -33,7 +33,7 @@ class _MyClassementState extends State<MyClassement> {
               itemCount: list.length,
               itemBuilder: (context, index) {
                 return Card(
-                  color: Color.fromRGBO(100, 0, 1, 0.3),
+                  color: Color.fromRGBO(100, 0, 1, 1),
                   child: Padding(
                     padding: EdgeInsets.all(16.0),
                     child: Text(list[index]),

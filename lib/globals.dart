@@ -39,6 +39,24 @@ String getSelectedDifficulty()
   }
 }
 
+String getSelectedValueStr(){
+  switch(selectedButtonIndex)
+  {
+    case 0:
+      return "5x5";
+    case 1:
+      return "6x6";
+    case 2:
+      return "7x7";
+    case 3:
+      return "8x8";
+    case 4:
+      return "9x9";
+    default:
+      return "5x5";
+  }
+}
+
 
 Future<String> readJson() async {
   String jsonString = await rootBundle.loadString('assets/res/grille.json');
