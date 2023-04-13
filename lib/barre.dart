@@ -9,9 +9,9 @@ class Barre extends StatefulWidget {
   final int x; // donne les coordonnées pour insérer les lignes
   final int y; // donne les coordonnées pour insérer les lignes
   final int taille;
-  Color customColor = Color.fromARGB(255, 255, 255, 255);
+  Color customColor;
 
-  Barre({this.width = 100, this.height = 100, required this.type, this.x = 0, this.y = 0, this.taille = 3});
+  Barre({this.width = 100, this.height = 100, required this.type, this.x = 0, this.y = 0, this.taille = 3, this.customColor = Colors.white});
 
   @override
   _BarreState createState() => _BarreState();
